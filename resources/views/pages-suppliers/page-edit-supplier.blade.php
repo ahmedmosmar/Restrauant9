@@ -10,7 +10,7 @@
             <button>
                 <a href="{{route('show-suppliers')}}">
                     <i class="fa fa-arrow-left"></i>
-                    رجوع
+                    <span>رجوع</span>
                 </a>
 
             </button>

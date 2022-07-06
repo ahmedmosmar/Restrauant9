@@ -4,7 +4,7 @@
 <div class="sub-content">
     <div class="sales-report-content">
 
-        <h2>  تقرير مبيعات </h2>
+        <h2> تقرير مبيعات </h2>
         {{-- ============ Start Form Get Sales Report ============= --}}
         <div class="form-content">
             <form action="{{route('get-sales-report')}}" method="POST">
@@ -16,8 +16,9 @@
                         <select name="table" id="" class="form-controll">
                             <option value="" selected disabled>اختر الطاولة من فضلك </option>
                             <option value=""> كل الطاولات</option>
+                            <option value="500">بيع مباشر</option>
                             @foreach ($tables as $table)
-                            <option value="{{$table->id}}">{{$table->table_name}}</option>
+                            <option value="{{$table->id}}">{{$table->id}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -39,7 +40,7 @@
                     <div class="form-group">
                         <label for="">من تاريخ </label>
                         <input type="date" class="form-controll" placeholder="التاريخ " name="date_from"
-                        autocomplete="off" required>
+                            autocomplete="off" required>
                     </div>
 
 
@@ -47,7 +48,7 @@
                     <div class="form-group">
                         <label for=""> الي تاريخ</label>
                         <input type="date" class="form-controll" placeholder="التاريخ " name="date_for"
-                        autocomplete="off" required>
+                            autocomplete="off" required>
                     </div>
 
 
@@ -64,10 +65,7 @@
 
         </div>
     </div>
-
+</div>
 </div>
 <!-- ===== End Main Content ===== -->
-
-</div>
-
 @stop

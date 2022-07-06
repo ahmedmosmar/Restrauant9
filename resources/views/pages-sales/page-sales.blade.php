@@ -24,8 +24,8 @@
     {{-- ========== All Tebles ========= --}}
     <div class="tables">
         <div class="row">
-
-
+            @if (Auth::user())
+            @if (Auth::user()->level == 1 )
             {{-- ======== Start  Reset ======= --}}
             <div class="col-md-3 col-sm-4">
                 <a href="{{url('show-reset')}}">
@@ -37,6 +37,8 @@
                 </a>
             </div>
             {{-- ======== End  Reset ======= --}}
+            @endif
+            @endif
 
             {{-- ======== Start direct Sale ======= --}}
             <div class="col-md-3 col-sm-4">
@@ -81,6 +83,5 @@
 {{-- ========== End Sales Content ======== --}}
 
 <!-- ===== End Main Content ===== -->
-
 </div>
 @stop

@@ -106,16 +106,6 @@
                     </div>
                     {{-- ====== End Select Waiter ====== --}}
 
-
-                    {{-- ===== Start Push Kash ==== --}}
-                    {{-- <div class="kash">
-                        <form action="">
-                            <label for="">الكاش</label>
-                            <input type="text" value="0" id="kashMoney" placeholder=" المبلغ" required>
-                        </form>
-                    </div> --}}
-                    {{-- ===== End Push Kash ==== --}}
-
                     <div class="bank">
                         <form action="">
                             <select name="" id="">
@@ -181,10 +171,7 @@
                     </div>
                 </div>
                 @endif
-
-
             </div>
-
             {{-- ################ End Site Foods ################# --}}
 
         </div>

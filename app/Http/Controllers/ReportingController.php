@@ -159,15 +159,15 @@ class ReportingController extends Controller
         //   return $request;
     }
 
-    public function printReport()
-    {
+    // public function printReport()
+    // {
 
-        $data = ['title' => 'Laravel 7 Generate PDF From View Example Tutorial'];
+    //     $data = ['title' => 'Laravel 7 Generate PDF From View Example Tutorial'];
 
-        // $pdf = PDF::loadView('pages-category.page-add-category', $data);
-        $pdf = PDF::loadView('report');
+    //     // $pdf = PDF::loadView('pages-category.page-add-category', $data);
+    //     $pdf = PDF::loadView('report');
 
 
-        return $pdf->download('report.pdf');
-    }
+    //     return $pdf->download('report.pdf');
+    // }
 }

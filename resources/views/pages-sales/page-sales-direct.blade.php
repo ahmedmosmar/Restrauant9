@@ -83,9 +83,8 @@
                     <span id="ckeckMoney">المبلغ</span>
                 </div>
 
-                {{-- ========= Start Box Push Money ========= --}}
-                <div class="push">
 
+                <div class="push">
                     {{-- ====== Start Select Waiter ====== --}}
                     <div class="weaters">
                         <form action="">
@@ -101,33 +100,7 @@
                     </div>
                     {{-- ====== End Select Waiter ====== --}}
 
-
-                    {{-- ===== Start Push Kash ==== --}}
-                    {{-- <div class="kash">
-                        <form action="">
-                            <label for="">الكاش</label>
-                            <input type="text" value="0" id="kashMoney" placeholder=" المبلغ" required>
-                        </form>
-                    </div> --}}
-                    {{-- ===== End Push Kash ==== --}}
-
-
-                    {{-- ======= Start Push By Bank Account ======== --}}
-                    {{-- <div class="bank">
-                        <form action="">
-                            <select name="" id="">
-                                <option value="" selected disabled> البنك</option>
-                                <option value="">الخرطوم</option>
-                                <option value="">امدرمان الوطني</option>
-                                <option value="">النيلين</option>
-                            </select>
-                            <input type="text" placeholder=" المبلغ">
-                        </form>
-                    </div> --}}
-                    {{-- ======= End Push By Bank Account ======== --}}
-
                 </div>
-                {{-- ========= End Box Push Money ========= --}}
 
 
                 {{-- ======= Start Oparation Accepte Or Reject The Orders ======= --}}
@@ -156,11 +129,9 @@
                 <div class="alert alert-warning">
                     <strong>عفواً!</strong> ... أضف بعض الاقسام اولاًً
                 </div>
-
                 @else
 
                 <div class="row types-foods">
-
                     {{-- ======= All Category ======= --}}
                     <div class="col-md-6">
                         <ul class="cat">
@@ -186,7 +157,6 @@
             {{-- ################ End Site Foods ################# --}}
 
             {{-- ================= End Food List ================= --}}
-
 
         </div>
     </div>

@@ -3,12 +3,11 @@
 
 <div class="sub-content">
     <div class="buys-report-content">
-
         <h2> تقرير المشتريات </h2>
 
         {{-- ================ Start Form Get Buys Report ============ --}}
         <div class="form-content">
-            <form action="{{route('get-buys-report')}}" method="POST" >
+            <form action="{{route('get-buys-report')}}" method="POST">
                 @csrf
                 <div class="row">
 
@@ -46,17 +45,12 @@
                             <i class="fa fa-refresh"></i>
                         </button>
                     </div>
-                    
+
                 </div>
             </form>
             {{-- ================ End Form Get Buys Report ============ --}}
-
         </div>
     </div>
-
 </div>
 <!-- ===== End Main Content ===== -->
-
-</div>
-
 @stop

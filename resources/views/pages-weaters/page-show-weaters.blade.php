@@ -15,23 +15,11 @@
             </div>
         @else
 
-        {{-- ====== Content Box Search ======== --}}
-        <div class="search-content">
-            <form action="{{route('search-weater')}}" method="POST" class="box-search">
-                @csrf
-                <input type="text" class="f-control" name="weaterName" id="input_search" placeholder=" ... ابحث"
-                    required>
-                <button type="submit"> <i class="fa fa-search"></i></button>
-            </form>
-
-            <form action="{{route('show-weater')}}" method="GET">
-                <button type="submit">الكل</button>
-            </form>
-        </div>
-
         {{-- =======  Table  Waiter  Data ======  --}}
         <div class="show-weater-content">
-            <table>
+         <div class="row">
+            <div class="col-md-12">
+             <table id="example">
                 <thead>
                     <td>الرقم</td>
                     <td>اسم الويتر</td>
@@ -67,6 +55,8 @@
 
                 </tbody>
             </table>
+            </div>
+         </div>
         </div>
         @endif
 

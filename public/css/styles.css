@@ -32,17 +32,25 @@ body {
     /* --sub-color: #01a0b5; */
     /* --sub-color:#027989; */
 
-    /* --sub-color: #04645b; */
-    /* --sub-color: #ff9800; */
-    /* --sub-color: #98a32b; */
-    /* --sub-color:#777111; */
-    /* --sub-color:#990022; */
-    /* --sub-color:#660000; */
-
     --content-color: #eaeaea;
     /* --content-color: #1a1b20; */
     --title-color: #7e7e7e;
 }
+
+.orange{
+    background-color: #ffb100;
+}
+
+.smi-blue{
+    background-color: #4ecdc4;
+}
+.smi-blue2{
+    background-color: #01a0b5;
+}
+.smi-green{
+    background-color: #98a32b;
+}
+
 
 .sub-content {
     padding: 20px;
@@ -65,16 +73,15 @@ body {
     padding: 10px;
 }
 
-.code-logo{
+.code-logo {
     min-height: 10vh;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 10px 0;
-
 }
 
-.logo{
+.logo {
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -85,7 +92,7 @@ body {
     border: 3px solid #01707e;
 }
 
-.logo > span{
+.logo > span {
     width: 40px;
     height: 40px;
     font-size: 30px;
@@ -97,11 +104,10 @@ body {
     background: none;
     border-radius: 50%;
     color: #01707e;
-
 }
 
-@media (max-width:768px){
-    .code-logo{
+@media (max-width: 768px) {
+    .code-logo {
         display: none;
     }
 }
@@ -180,7 +186,7 @@ body {
     margin: 20px 15px;
     border: none;
     outline: none;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     background-color: var(--sub-color);
     color: white;
     text-transform: uppercase;
@@ -194,7 +200,9 @@ body {
 .form-content form .send-data:hover i.fa-refresh {
     animation: ani 0.5s linear infinite;
 }
-
+.form-content form .send-data i {
+    padding: 0;
+}
 .form-content form .send-data:hover {
     background-color: var(--sub-color-dark);
     color: white;
@@ -215,10 +223,10 @@ body {
 
 /* ############### Start Public Table ############### */
 table {
-    width: 100%;
+    width: 100% !important;
     height: fit-content;
-    text-align: center;
-    direction: rtl;
+    text-align: center !important;
+    direction: rtl !important;
     border-spacing: 0;
 }
 
@@ -242,6 +250,27 @@ table tr td {
     color: var(--main-color);
 }
 
+/* == data table == */
+table.dataTable thead th,
+table.dataTable thead td,
+table.dataTable tfoot th,
+table.dataTable tfoot td {
+    text-align: center !important;
+}
+
+table.dataTable thead th,
+table.dataTable thead td,
+table.dataTable tfoot th,
+table.dataTable tfoot td {
+    text-align: center;
+}
+
+.data-table-lable {
+    margin: 0 10px;
+    background-color: red;
+}
+/* == data table == */
+
 table td:first-of-type {
     border-right: 2px solid white;
 }
@@ -259,7 +288,7 @@ table tr:hover {
 }
 
 table tbody tr:hover {
-    background-color: var(--main-color);
+    background-color: var(--main-color) !important;
     transform: scaleX(101%);
     border-radius: var(--border-radius);
     box-shadow: -15px -15px 15px rgba(255, 255, 255, 0.2), 15px 15px 15px rgba(0, 0, 0, 0.1);
@@ -270,7 +299,7 @@ table tbody tr:hover td {
 }
 
 table .opartion {
-    width: 20%;
+    /* width: 20%; */
 }
 
 table .opartion button {
@@ -336,6 +365,7 @@ table .opartion .btn-delete-data {
 .content .fa-bars:hover {
     background-color: var(--sub-color);
     color: var(--main-color);
+    border-radius: var(--border-radius) !important;
 }
 
 .row .sidemenu {
@@ -345,6 +375,11 @@ table .opartion .btn-delete-data {
     padding: 5px;
     font-family: changa;
     transition: transform 5s ease-in-out;
+    position: relative;
+}
+
+.menu-open {
+    background-color: red;
 }
 
 .sidemenu.hide {
@@ -354,16 +389,24 @@ table .opartion .btn-delete-data {
 .sidemenu .dashboard {
     margin-top: 10px;
     padding: 0 0;
+
     /* border: 4px solid var(--sub-color); */
     /* border-radius: var(--border-radius); */
 }
 
-.sidemenu .dashboard span,
+.sidemenu .dashboard h5{
+    font-family: Brush Script MT;
+    font-size: 2.7em;
+    color: #fff !important;
+    font-weight: 600;
+
+}
+/* .sidemenu .dashboard span,
 .dashboard i {
     font-size: 1.2em;
     font-weight: bold;
     color: var(--white-color);
-}
+} */
 
 .sidemenu ul {
     list-style: none;
@@ -585,7 +628,7 @@ i.fa-level-down {
     transition: 0.3s ease-in;
 }
 
-.login-form .form-group input:focus  {
+.login-form .form-group input:focus {
     border-bottom: 5px solid var(--sub-color);
 }
 .login-form .form-group input:focus + i {
@@ -636,9 +679,6 @@ i.fa-level-down {
     color: white;
     background-color: transparent;
 }
-
-
-
 
 /* ########### End form login ########### */
 
@@ -805,7 +845,8 @@ i.fa-level-down {
     padding: 10px;
 }
 
-.header .down button{
+.header .down button,
+.header .dropdown > button {
     background-color: var(--sub-color) !important;
     color: white;
     min-width: 150px;
@@ -817,43 +858,24 @@ i.fa-level-down {
     border: none;
 }
 
-.dropdown-toggle::after{
-font-size: 23px;
+.header .dropdown button a {
+    text-decoration: none;
+    color: var(--main-color);
 }
-
-.header .down button .caret{
- margin-left: 10px;
+i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    /* width: 20px;
+ height: 20px; */
+    padding: 7px;
+    transition: 0.4s ease-in-out;
 }
-
-.dropdown-menu{
-    top: 8% !important;
-    transform: translateX(10px);
-    min-width: 11.5rem;
+.dropdown .dropdown-menu button:hover .fa-sign-out {
+    background-color: var(--danger-color);
+    color: var(--white-color);
 }
-
-.dropdown-menu li{
-
-}
-.dropdown-menu.show:hover{
-     /* transform: translateX(0) !important; */
-}
-
-.dropdown-menu.show{
-    /* display: block; */
-    background-color: khaki;
-      display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-
-
-
-
-
-
-
-
-
 
 
 .header .user {
@@ -1021,17 +1043,6 @@ font-size: 23px;
 
 /* ======= End category page style ====== */
 
-/* ======= Start type page style ====== */
-
-/* ======= End type page style ====== */
-
-/* ======= Start weater page style ====== */
-
-/* ======= End weater page style ====== */
-
-/* ======= Start register user page style ====== */
-
-/* ======= End register user page style ====== */
 
 /* ======= Start sales  page style ====== */
 .sales-content {
@@ -1484,7 +1495,7 @@ font-size: 23px;
 /* ======= End  sales table page style ====== */
 
 /* ======= Start  Reset  page style ====== */
-.report-reset{
+.report-reset {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1493,42 +1504,27 @@ font-size: 23px;
     color: var(--main-color);
     /* background-color: var(--title-color); */
     /* border-radius: var(--border-radius); */
-    margin:10px 0;
+    margin: 10px 0;
     flex-wrap: wrap;
-
 }
 .report-reset .price,
-.report-reset  .number{
-  /* border:2px solid var(--main-color); */
-  padding: 0 10px ;
-  width: 20%;
-  /* border-radius: var(--border-radius); */
+.report-reset .number {
+    /* border:2px solid var(--main-color); */
+    padding: 0 10px;
+    width: 20%;
+    /* border-radius: var(--border-radius); */
 }
 
-.report-reset button{
-  border:2px solid var(--main-color);
+.report-reset button {
+    border: 2px solid var(--main-color);
 }
 
-.print-reset{
+.print-reset {
     display: flex;
 }
 
-.show-resets{
+.show-resets {
     margin-left: 10px;
 }
 /* ======= End  Reset  page style ====== */
 
-
-
-
-/* ======= Start  buys  page style ====== */
-
-/* ======= End  buys  page style ====== */
-
-/* ======= Start  suppliers  page style ====== */
-
-/* ======= End  supplier page style ====== */
-
-/* ======= Start  reporting page style ====== */
-
-/* ======= End  reporting page style ====== */

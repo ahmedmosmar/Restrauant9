@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\OrderModel;
+use App\Models\ScoureModel;
 use App\Models\CategoryModel;
 use App\Traits\my_functions;
 use PhpParser\Node\Expr\Empty_;
@@ -15,9 +16,13 @@ class OrderController extends Controller
     {
 
         if (isset($request)) {
+            
             $order = OrderModel::where('sales_table', $request->sales_table)->where('type_id', $request->type_id)->where('status', 0)->get();
 
             if (count($order) <= 0) {
+
+
+
                 $create = $this->storeThink(OrderModel::class, $request);
                 if ($create) {
 

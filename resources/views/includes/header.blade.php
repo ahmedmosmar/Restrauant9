@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>manageMenu</title>
+    <title>MANAGE-RESTARUANT</title>
     <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
-    {{-- <link rel="stylesheet" type="text/css" href="{{asset('css/all.min.css')}}"> --}}
     <link rel="stylesheet" type="text/css" href="{{asset('font-awesome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('./DataTables-1.12.1/css/dataTables.bootstrap4.min.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('./DataTables-1.12.1/css/jquery.dataTables.min.css')}}" />
     <link href="{{asset('css/styles.css')}}" rel="stylesheet" />
-    {{-- <link href="{{asset('css/sweetalert.css')}}" rel="stylesheet" /> --}}
 </head>
 
 <body>
@@ -23,17 +23,18 @@
             <div class="dashboard">
                 <h5>
                     <span class="hidden-md">CodeeWebb</span>
-                    {{-- <i class="fa fa-dashboard"></i> --}}
                 </h5>
             </div>
 
+            {{-- ===== Logo Site ==== --}}
             <div class="code-logo">
                 <div class="logo">
-                   <span>c</span>
-                   <span>w</span>
+                    <span>c</span>
+                    <span>w</span>
                 </div>
             </div>
-            <ul>
+
+            <ul class="list">
                 <!-- ----- link main page ----- -->
                 <li class="active">
                     <a href="{{route('home')}}">
@@ -41,7 +42,6 @@
                         <span class="title"> الصفحة الرئيسية </span>
                     </a>
                 </li>
-
 
                 <!-- ----- Start link  sales -----  -->
                 <li>
@@ -111,8 +111,6 @@
 
 
                 <!-- ----- start link manage Users -----  -->
-                {{-- @if (Auth::user())
-                   @if (Auth::user()->level == 1 || auth()->user()->access_reportes == "on") --}}
                 <li>
                     <a href="#collapse_users" data-toggle="collapse" aria-controls="ture">
                         <i class="fa fa-users  icons-menu icon-menu"></i>
@@ -166,6 +164,7 @@
 
                 @endif
                 @endif
+
                 <!-- ----- Start link  reporting -----  -->
                 @if (Auth::user())
                 @if (Auth::user()->level == 1 )
@@ -189,12 +188,12 @@
                 @endif
 
                 <!-- ----- Start link  settings -----  -->
-                <li>
+                {{-- <li>
                     <a href="{{route('sales')}}">
                         <i class="fa fa-gear icon-menu"></i>
                         <span class="title">الإعدادات</span>
                     </a>
-                </li>
+                </li> --}}
 
             </ul>
         </div>
@@ -203,46 +202,22 @@
         <!-- ===== Start Main Content ===== -->
         <div class="col-lg-10 col-md-9  col-sm-9 col-xs-9  content" id="main-content">
             <div class="header">
-
-                <div class="down">
-                    <button class="btn dropdown-toggle" type="button" data-toggle="">
+                <div class="dropdown">
+                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
                         @if (Auth::user())
                         {{ Auth::user()->name }}
                         @endif
-                        <span class="caret"></span>
                     </button>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#">
-                                <div class="user">
-                                    <button class="btn">
-                                        <i class="fa fa-sign-out"></i>
-                                        {{-- تسجيل خروج --}}
-                                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                       document.getElementById('logout-form').submit();">
-                                            تسجيل خروج
-                                        </a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                            class="d-none">
-                                            @csrf
-                                        </form>
-                                    </button>
 
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-gear icon-menu"></i>
-                                <span class="title">الإعدادات</span>
-                            </a>
-                        </li>
-                    </ul>
+                    <div class="dropdown-menu">
+                        <button class="btn box-logout dropdown-item" id="logout" _token={{csrf_token()}}>
+                            <i class="fa fa-sign-out"></i>
+                            <span>تسجيل خروج</span>
+                        </button>
+                    </div>
                 </div>
-
 
                 <div>
                     <i id="toggel-menu" class="fa fa-bars"></i>
                 </div>
-
             </div>

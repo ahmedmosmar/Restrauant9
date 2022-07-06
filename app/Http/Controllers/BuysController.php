@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\BuysModel;
 use App\Models\SupplierModel;
+use App\Models\ScoureModel;
 use App\Http\Requests\BuysRequest;
 use App\Traits\my_functions;
 use Prophecy\Doubler\Generator\Node\ReturnTypeNode;
@@ -25,7 +26,19 @@ class BuysController extends Controller
     // Function Store New Buys
     public function storeNewBuys(BuysRequest $request)
     {
+        // return $request;
         if (isset($request)) {
+
+            // $scoure = ScoureModel::get();
+            $scoureupdate = ScoureModel::first();
+
+            // if($scoureupdate->scoure >= $request->final_price){
+
+            // }
+              $scoureupdate->update([
+                 'scoure' => $scoureupdate->scoure - $request->final_price
+             ]);
+
             $create = $this->storeThink(BuysModel::class, $request);
             if ($create  == true) {
                 return redirect()->back()->with(['success' => 'تم الادخال بنجاح']);

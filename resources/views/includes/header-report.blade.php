@@ -7,7 +7,6 @@
         <meta name="author" content="" />
         <title>manageMenu</title>
         <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
-        <link rel="stylesheet" type="text/css" href="{{asset('css/all.min.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('font-awesome/css/font-awesome.min.css')}}" >
         <link rel="stylesheet" href="{{asset('css/report-style.css')}}">
     </head>

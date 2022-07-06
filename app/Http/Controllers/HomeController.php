@@ -10,7 +10,7 @@ use App\Models\TypeModel;
 use App\Models\SupplierModel;
 use App\Models\WeaterModel;
 use App\Models\BuysModel;
-use App\Models\TableModel;
+use App\Models\ScoureModel;
 
 class HomeController extends Controller
 {
@@ -23,12 +23,15 @@ class HomeController extends Controller
 
     public function index()
     {
+        // return today();
         $buys       = BuysModel::all();
-        $sales      = OrderModel::all();
+        $sales      = OrderModel::wheredate('created_at' , today())->where('status' , 1)->get();
+        $scoure     = ScoureModel::first();
         $suppliers  = SupplierModel::all();
         $weaters    = WeaterModel::all();
         $types      = TypeModel::all();
-        $resets       = ResetModel::all();
+        $resets     = ResetModel::all();
+
         $buys_price = 0;
         foreach ($buys as $buy) {
             $buys_price += $buy->final_price;
@@ -47,6 +50,6 @@ class HomeController extends Controller
 
 
 
-        return view('home', compact('buys_price', 'sales_count', 'suppliers_count', 'weaters_count', 'types_count', 'resets_price'));
+        return view('home', compact('buys_price', 'sales_count', 'suppliers_count', 'weaters_count', 'types_count', 'scoure'));
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Traits\my_functions;
 use Illuminate\Support\Facades\Hash;
-use App\User;
+use App\Models\User;
 // use PDF;
 use Barryvdh\DomPDF\Facade\pdf;
 // use Barryvdh\PDF;

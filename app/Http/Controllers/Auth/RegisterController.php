@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\Models\User;
+use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -50,9 +50,19 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'full_name' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'access_category' => ['string'],
+            // 'access_weater' => ['boolean'],
+            // 'access_type' => ['boolean'],
+            // 'access_buyes' => ['boolean'],
+            // 'access_resorces' => ['boolean'],
+            // 'access_sales' => ['boolean'],
+            // 'access_acountents' => ['boolean'],
+            // 'access_reportes' => ['boolean'],
+
         ]);
     }
 
@@ -60,14 +70,25 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Models\User
+     * @return \App\User
      */
     protected function create(array $data)
     {
+
         return User::create([
+            'full_name' => $data['full_name'],
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'access_category' => $data['access_category'],
+            // 'access_weater' => $data['access_weater'],
+            // 'access_type' => $data['access_type'],
+            // 'access_buyes' => $data['access_buyes'],
+            // 'access_resorces' => $data['access_resorces'],
+            // 'access_sales' => $data['access_sales'],
+            // 'access_acountents' => $data['access_acountents'],
+            // 'access_reportes' => $data['access_reportes'],
+
         ]);
     }
 }

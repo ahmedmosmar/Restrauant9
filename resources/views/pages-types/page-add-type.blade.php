@@ -50,28 +50,6 @@
                         @enderror
                     </div>
 
-                    {{-- ======= Input Cost Price ======= --}}
-                    {{-- <div class="form-group">
-                        <label for=""> سعر التكلفة </label>
-                        <input type="text" name="price_cost" class="form-controll"
-                            placeholder="ادخل سعر التكلفة من فضلك  " required>
-                        @error('price_cost')
-                        <small class="form-text text-danger" style="">{{$message}}</small>
-                        @enderror
-                    </div> --}}
-
-                    {{-- ======== Select The Time For Make ====== --}}
-                    {{-- <div class="form-group">
-                        <label for=""> الزمن </label>
-                        <select name="time_make" id="" class="form-controll" required>
-                            <option value="" disabled selected> إختر الزمن من فضلك</option>
-                            <option value="22">2</option>
-                        </select>
-                        @error('time_make')
-                        <small class="form-text text-danger" style="">{{$message}}</small>
-                        @enderror
-                    </div> --}}
-
                     <div class="form-group"></div>
 
                     {{-- ====== Submit Button ====== --}}

@@ -11,7 +11,7 @@
             <button>
                 <a href="{{route('show-categorys')}}">
                     <i class="fa fa-arrow-left"></i>
-                    رجوع
+                    <span>رجوع</span>
                 </a>
 
             </button>
@@ -39,20 +39,17 @@
 
                     {{-- ===== Submit Button ===== --}}
                     <div class="form-group box-submit">
-                        <button class="btn send-data" type="submit">تحديث
+                        <button class="btn send-data" type="submit">
                             <i class="fa fa-refresh"></i>
+                            <span>تحديث</span>
                         </button>
                     </div>
                 </div>
             </form>
         </div>
         {{-- =========== End form update Category ===========  --}}
-
     </div>
 </div>
-
 </div>
 <!-- ===== End Main Content ===== -->
-
-</div>
 @stop

@@ -1,6 +1,15 @@
 
 window.onload = function () {
     "use strict";
+    //  localStorage.setItem('classActive' ,'active');
+
+    // console.log(localStorage.getItem('li'));
+    //  localStorage.getItem('classActive');
+    // let list = document.querySelector(".list");
+
+    // list.forEach((el) => {
+        // localStorage.getItem(el).classList.add('active');
+    // });
 
     let tbody = document.querySelector("#tbody"),
         salesTableNumber = document.querySelector(".sales-table"),
@@ -167,9 +176,9 @@ window.onload = function () {
                             ul_types.appendChild(li);
 
                         });
-                            ul_types.classList.remove('ifect');
+                        ul_types.classList.remove('ifect');
                     } else {
-                          ul_types.classList.remove('ifect');
+                        ul_types.classList.remove('ifect');
                         // ====== Fetch Types In UL Element =====
                         data.types.forEach((typeData) => {
 
@@ -346,66 +355,163 @@ window.onload = function () {
             // }
             // else {
 
-                // ======= Start ConFirm Alert =======
-                swal({
-                    title: "هل تريد تاكيد الطلبات ؟",
-                    text: "",
-                    buttons: true,
-                    dangerMode: true,
-                    dangerModeButton: 'true',
-                }).then((willDelete) => {
+            // ======= Start ConFirm Alert =======
+            swal({
+                title: "هل تريد تاكيد الطلبات ؟",
+                text: "",
+                buttons: true,
+                dangerMode: true,
+                dangerModeButton: 'true',
+            }).then((willDelete) => {
 
-                    if (willDelete) {
+                if (willDelete) {
 
-                        let tbody_tr = document.querySelectorAll("#tbody tr");
-                        tbody_tr.forEach((element) => {
-                            element.setAttribute("class", "hide-order");
-                        });
+                    let tbody_tr = document.querySelectorAll("#tbody tr");
+                    tbody_tr.forEach((element) => {
+                        element.setAttribute("class", "hide-order");
+                    });
 
-                        // == Ajax jQuery -- Method Post ==
-                        $.post("/add-reset",
-                            {
-                                _token: $(this).attr("_token"),
-                                final_price: final_price.textContent,
-                                table_number: salesTableNumber.getAttribute("id"),
-                                weater_id: $("select[name='weater_name']").val(),
-                            },
-                            function (data, status, xhr) {
-                                if (data.status == true) {
-                                    console.log("status success => " + status);
-                                    final_price.textContent = 0;
-                                    // kashMoney.value = 0;
-                                    ckeckMoney.parentElement.style.visibility = 'hidden';
-                                    successMessage(' ... تم التاكيد بنجاح ');
-                                }
+                    // == Ajax jQuery -- Method Post ==
+                    $.post("/add-reset",
+                        {
+                            _token: $(this).attr("_token"),
+                            final_price: final_price.textContent,
+                            table_number: salesTableNumber.getAttribute("id"),
+                            weater_id: $("select[name='weater_name']").val(),
+                        },
+                        function (data, status, xhr) {
+                            if (data.status == true) {
+                                console.log("status success => " + status);
+                                final_price.textContent = 0;
+                                // kashMoney.value = 0;
+                                ckeckMoney.parentElement.style.visibility = 'hidden';
+                                successMessage(' ... تم التاكيد بنجاح ');
                             }
-                        );
+                        }
+                    );
 
-                    }
-                });
-                // ======= End ConFirm Alert =======
+                }
+            });
+            // ======= End ConFirm Alert =======
 
             // }
         }
     });
     // ============== End  Accepte The Reset  ===========
 
+    // <button class="btn box-logout dropdown-item" >
+    //     <i class="fa fa-sign-out"></i>
 
+    //     <a href="{{ route('logout') }}" onclick="event.preventDefault();
+    //                                    document.getElementById('logout-form').submit();">
+    //         تسجيل خروج
+    //                                     </a>
+    //     <form id="logout-form" action="{{ route('logout') }}" method="POST"
+    //         class="d-none">
+    //         @csrf
+    //   </form>
+    // </button>
 
+    $(document).on("click", "#logout", function (e) {
+        e.preventDefault();
+
+        swal({
+            title: "هل تريد تسجيل الخروج  ؟",
+            text: "",
+            buttons: true,
+            dangerMode: true,
+            dangerModeButton: 'true',
+        }).then((willDelete) => {
+
+            if (willDelete) {
+
+                // == Ajax jQuery -- Method Post ==
+                $.post("logout",
+                    {
+                        _token: $(this).attr("_token"),
+                    },
+                    function (data, status, xhr) {
+                        if (status == 'success') {
+                            location.href = "http://127.0.0.1:8000/login";
+                        }
+                    }
+                );
+
+            }
+        });
+
+    });
 
     // ================ Count All Price For Buys ============
-    // setInterval(() => {
-    //     let amount = document.getElementById('amount'),
-    //         unit_price = document.getElementById('unitPrice'),
-    //         final_price = document.getElementById('finalPrice');
 
-    //     if (amount.value != '' && unit_price.value != '') {
-    //         if (parseFloat(amount.value) > 0 && parseFloat(unit_price.value) > 0)
-    //             final_price.value = parseFloat(amount.value) * parseFloat(unit_price.value);
-    //     }
+    setInterval(() => {
+        let amount = document.getElementById('amount'),
+            unit_price = document.getElementById('unitPrice');
+        if (amount && unit_price) {
+
+            // final_price = document.getElementById('finalPrice');
+            // let amount = document.getElementById('amount'),
+            //    let unit_price = document.getElementById('unitPrice'),
+            let final_price = document.getElementById('finalPrice');
+
+            if (amount.value != '' && unit_price.value != '') {
+                if (parseFloat(amount.value) > 0 && parseFloat(unit_price.value) > 0)
+                    final_price.value = parseFloat(amount.value) * parseFloat(unit_price.value);
+            }
+
+        }
+    }, 500);
+
+    setInterval(function () {
+        if (document.getElementById('example_length')) {
+            let example_previous = document.getElementById('example_previous'),
+                example_next = document.getElementById('example_next');
+
+            example_previous.textContent = "السابق";
+            example_next.textContent = "التالي";
+        }
+
+    }, 10);
 
 
-    // }, 1000);
+    setTimeout(function () {
+        if (document.getElementById('example_length')) {
+
+            let example_length = document.getElementById('example_length'),
+                example_filter = document.getElementById('example_filter'),
+                // example_previous = document.getElementById('example_previous'),
+                // example_next = document.getElementById('example_next'),
+                example_info = document.getElementById('example_info');
+
+
+            example_filter.children[0].childNodes[0].textContent = "ابحث";
+
+
+
+
+            let option = document.createElement('option');
+            option.textContent = 5;
+            option.setAttribute('value', 5);
+
+
+            example_length.children[0].childNodes[0].textContent = "اعرض";
+            example_length.children[0].childNodes[2].textContent = "مدخلات";
+
+            example_length.children[0].childNodes[1].classList.add('data-table-lable');
+            example_length.children[0].childNodes[1].insertBefore(option, example_length.children[0].childNodes[1].childNodes[0]);
+
+            example_info.style.display = "none";
+        }
+
+    }, 100);
+
+
+
+
+
+
+
+
 
 
     // ==================  Validation Category Name ================
@@ -547,7 +653,7 @@ window.onload = function () {
     });
 
 
-      // =========== Delete Reset =======
+    // =========== Delete Reset =======
     $(document).on("click", ".delete-reset", function (event) {
         event.preventDefault();
 
@@ -805,6 +911,74 @@ window.onload = function () {
 
     // =========================================================================================================
 
+    // ===== Start js for Side Menu ======
+
+    // ==== get Element ====
+    let toggelMenu = document.getElementById('toggel-menu'),
+        sideMenu = document.getElementById('main-menu'),
+        mainContent = document.getElementById('main-content');
+
+    // ===== toggle to hile and show side menu ====
+    if (toggelMenu) {
+        toggelMenu.onclick = function () {
+            sideMenu.classList.toggle('hide');
+            if (sideMenu.classList.contains('hide')) {
+                mainContent.classList.remove('col-lg-10');
+                mainContent.classList.remove('col-md-9');
+                mainContent.classList.remove('col-sm-9');
+                mainContent.classList.remove('col-xs-9');
+                mainContent.classList.add('col-lg-12');
+                mainContent.classList.add('col-md-12');
+                mainContent.classList.add('col-sm-12');
+                mainContent.classList.add('col-xs-12');
+            } else {
+                sideMenu.classList.add('show');
+                mainContent.classList.remove('col-lg-12');
+                mainContent.classList.remove('col-md-12');
+                mainContent.classList.remove('col-sm-12');
+                mainContent.classList.remove('col-xs-12');
+                mainContent.classList.add('col-lg-10');
+                mainContent.classList.add('col-md-9');
+                mainContent.classList.add('col-sm-9');
+                mainContent.classList.add('col-xs-9');
+
+
+            }
+        }
+    }
+    // ===== End js for Side Menu ======
+
+    let list = document.querySelectorAll(".list li");
+
+    list.forEach((el) => {
+        el.onclick = function () {
+            removeclass();
+            this.classList.add("active");
+
+            localStorage.setItem(el, el);
+        };
+    });
+
+    function removeclass() {
+        list.forEach((el) => {
+            el.classList.remove("active");
+        });
+    }
+
+    // localStorage.clear();
+
+    // function removeclass2() {
+    //     ul_list.forEach((el) => {
+    //         el.classList.add("hide");
+    //     });
+    // }
+
+
+
+
+
+
+
 
 
 
@@ -829,13 +1003,13 @@ window.onload = function () {
 
 
 
-// let Menu = document.querySelector('.dropdown-menu'),
-//     ToggelButton = document.querySelector('.dropdown-toggle');
+    // let Menu = document.querySelector('.dropdown-menu'),
+    //     ToggelButton = document.querySelector('.dropdown-toggle');
 
-//     ToggelButton.addEventListener( 'click', function(){
-//       Menu.classList.toggle('show');
-//     //   Menu.style.top = "10%";
-//     });
+    //     ToggelButton.addEventListener( 'click', function(){
+    //       Menu.classList.toggle('show');
+    //     //   Menu.style.top = "10%";
+    //     });
 
 
 
@@ -891,9 +1065,9 @@ window.onload = function () {
     // ===== Start js for Side Menu ======
 
     // ==== get Element ====
-    let toggelMenu = document.getElementById("toggel-menu"),
-        sideMenu = document.getElementById("main-menu"),
-        mainContent = document.getElementById("main-content");
+    // let toggelMenu = document.getElementById("toggel-menu"),
+    //     sideMenu = document.getElementById("main-menu"),
+    //     mainContent = document.getElementById("main-content");
 
     // ===== toggle to hile and show side menu ====
     // toggelMenu.onclick = function () {

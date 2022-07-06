@@ -37,15 +37,15 @@ class CategoryController extends Controller
     public function showCategory()
     {
         $categorys = CategoryModel::select('id', 'category_name', 'created_at')->get();
-        // $categorys = CategoryModel::select('id', 'category_name', 'created_at')->paginate(5);
+        // $categorys = CategoryModel::select('id', 'category_name', 'created_at')->paginate(10);
         $EmptyError = '';
-
+        $index = 1;
 
         if ($categorys->count() > 0) {
-            return view('pages-category.page-show-category', compact('categorys', 'EmptyError'));
+            return view('pages-category.page-show-category', compact('categorys', 'EmptyError','index'));
         } else if ($categorys->count() <= 0) {
             $EmptyError = 1;
-            return  view('pages-category.page-show-category', compact('categorys', 'EmptyError'));
+            return  view('pages-category.page-show-category', compact('categorys', 'EmptyError','index'));
         }
     }
 

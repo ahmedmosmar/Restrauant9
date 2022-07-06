@@ -2,27 +2,22 @@
 
 use Illuminate\Support\Facades\Route;
 
+Auth::routes();
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// ################## All Route In The Project ###################
 
+    Route::group(['namespace' => 'App\Http\Controllers','middleware' => 'auth'], function () {
 
-// Route::namespace('App\Http\Controllers')->middleware('auth')->group(function () {
-Route::namespace('App\Http\Controllers')->group(function () {
-
-
-    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/home', 'HomeController@index')->name('home');
 
         ###################### Start Route for User #####################
-        Route::get('/home', 'HomeController@index')->name('home');
+        
         Route::get('/add-user', 'UserController@addUser')->name('add-user');
         Route::post('/user-register', 'UserController@registerUser')->name('user-register');
         Route::get('/show-users', 'UserController@showUser')->name('show-users');
         Route::get('/edit-user/{user_id}', 'UserController@editUser')->name('edit-user');
         Route::get('/delete-user/{user_id}', 'UserController@deleteUser')->name('delete-user');
         Route::put('update-user/{user_id}', 'UserController@updateUser')->name('update-user');
-
         Route::get('search-for-user/{text_search}', 'UserController@searchForUser')->name('search-for-user');
         Route::get('/create', 'UserController@create');
 
@@ -38,13 +33,11 @@ Route::namespace('App\Http\Controllers')->group(function () {
         Route::put('update-category/{category_id}', 'CategoryController@updateCategory')->name('update-category');
         Route::get('delete-category/{category_id}', 'CategoryController@deleteCategory')->name('delete-category');
         Route::get('check-for-delete/{category_id}', 'CategoryController@ckeckForDelete')->name('check-for-delete');
-
         Route::post('store-new-category', 'CategoryController@storeNewCategory')->name('store-new-category');
         Route::get('get-category-name/{cat_name}', 'CategoryController@getCategoryName')->name('get-category-name');
         Route::post('search-category', 'CategoryController@searchCategory')->name('search-category');
 
         ###################### End Route for Category #####################
-
 
 
 
@@ -58,8 +51,7 @@ Route::namespace('App\Http\Controllers')->group(function () {
         Route::post('store-new-type', 'TypeController@storeNewType')->name('store-new-type');
         Route::post('search-type', 'TypeController@searchType')->name('search-type');
 
-        ###################### Start Route for Types #####################
-
+        ###################### End Route for Types #####################
 
 
 
@@ -73,7 +65,7 @@ Route::namespace('App\Http\Controllers')->group(function () {
         Route::post('store-new-weater', 'WeaterController@storeNewWeater')->name('store-new-weater');
         Route::post('search-weater', 'WeaterController@searchWeater')->name('search-weater');
 
-        ###################### Start Route for Weater #####################
+        ###################### End Route for Weater #####################
 
 
 
@@ -86,7 +78,7 @@ Route::namespace('App\Http\Controllers')->group(function () {
         Route::get('get-item/{id}', 'salesController@getCategoryItems')->name('get-item');
         Route::get('get-item-auto/{tabel_number}', 'salesController@getItemAuto')->name('get-item-auto');
 
-        ###################### Start Route for Sales #####################
+        ###################### End Route for Sales #####################
 
 
 
@@ -98,7 +90,7 @@ Route::namespace('App\Http\Controllers')->group(function () {
         Route::get('dicreace-orders/{orders_id}', 'OrderController@dicreaceOrders')->name('dicreace-orders');
         Route::get('reject_orders/{tabel_number}', 'OrderController@rejectOrders')->name('reject_orders');
 
-        ###################### Start Route for Orders #####################
+        ###################### End Route for Orders #####################
 
 
 
@@ -111,7 +103,7 @@ Route::namespace('App\Http\Controllers')->group(function () {
         Route::put('update-buy/{buy_id}', 'BuysController@updateBuy')->name('update-buy');
         Route::get('delete-buy/{buy_id}', 'BuysController@deleteBuy')->name('delete-buy');
 
-        ###################### Start Route for Buys #####################
+        ###################### End Route for Buys #####################
 
 
 
@@ -125,24 +117,17 @@ Route::namespace('App\Http\Controllers')->group(function () {
         Route::put('update-supplier/{supplier_id}', 'SupplierController@updateSupplier')->name('update-supplier');
         Route::get('check-delete-supplier/{supplier_id}', 'SupplierController@checkDeleteSupplier')->name('check-delete-supplier');
 
-        ###################### Start Route for supplier #####################
+        ###################### End Route for supplier #####################
 
 
 
-        ###################### Start Route for Supplier #####################
+        ###################### Start Route for Reset #####################
 
         Route::get('show-reset', 'ResetContoller@showReset')->name('show-reset');
         Route::get('show-reset-order/{reset_id}', 'ResetContoller@showResetOrder')->name('show-reset-order');
         Route::get('delete-reset/{reset_id}', 'ResetContoller@deleteReset')->name('delete-reset');
 
-        // Route::post('store-new-supplier' ,'SupplierController@storeNewSupplier')->name('store-new-supplier');
-        // Route::get('show-suppliers','SupplierController@showSuppliers')->name('show-suppliers');
-        // Route::get('edit-supplier/{supplier_id}','SupplierController@editSupplier')->name('edit-supplier');
-        // Route::get('delete-supplier/{supplier_id}','SupplierController@deleteSupplier')->name('delete-supplier');
-        // Route::put('update-supplier/{supplier_id}','SupplierController@updateSupplier')->name('update-supplier');
-        // Route::get('check-delete-supplier/{supplier_id}','SupplierController@checkDeleteSupplier')->name('check-delete-supplier');
-
-        ###################### Start Route for supplier #####################
+        ###################### End Route for Reset #####################
 
 
 
@@ -156,11 +141,7 @@ Route::namespace('App\Http\Controllers')->group(function () {
             Route::post('get-buys-report', 'ReportingController@getBuysReport')->name('get-buys-report');
             Route::get('buys-report', 'ReportingController@buysReport')->name('buys-report');
         });
-        ###################### Start Route for Report #####################
+        ###################### End Route for Report #####################
 
         Route::post('add-reset', 'ResetContoller@addReset')->name('add-reset');
     });
-});
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

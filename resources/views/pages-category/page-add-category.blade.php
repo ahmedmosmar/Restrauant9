@@ -30,8 +30,9 @@
 
                     {{-- ===== Submit Button ===== --}}
                     <div class="form-group box-submit">
-                        <button class="btn send-data" type="submit" id="send_category_name">إرسال
+                        <button class="btn send-data" type="submit" id="send_category_name">
                             <i class="fa fa-send"></i>
+                            <span>إرسال</span>
                         </button>
                     </div>
 
@@ -41,8 +42,6 @@
         {{-- =========== End form add Category ===========  --}}
     </div>
 </div>
-
 </div>
 <!-- ===== End Main Content ===== -->
-</div>
 @stop

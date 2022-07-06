@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ResetModel;
 use App\Models\OrderModel;
+use App\Models\ScoureModel;
+
 use App\Traits\my_functions;
 
 class ResetContoller extends Controller
@@ -15,6 +17,10 @@ class ResetContoller extends Controller
 
         if (isset($request)) {
 
+              $scoureupdate = ScoureModel::first();
+                $scoureupdate->update([
+                    'scoure' => $scoureupdate->scoure + $request->final_price
+                ]);
             $add_reset = $this->storeThink(ResetModel::class, $request);
             if ($add_reset) {
 
