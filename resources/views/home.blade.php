@@ -56,7 +56,7 @@
                 <i class="fa fa-money"></i>
                 <span>رصيدالخذنة</span>
                 <hr>
-                <span class="count"> {{$scoure->scoure}} SD</span>
+                {{-- <span class="count"> {{$scoure->scoure}} SD</span> --}}
             </div>
 
         </div>
